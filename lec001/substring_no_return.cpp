@@ -6,26 +6,28 @@ int substring (string input,string ans)
 {
     if(input.length()==0)
     {
-        ans.push_back("");
+        cout<<ans<<endl;
         return 1;
     }
+    int count =0;
     char ch=input[0];
-    vector<string> smallans=substring(input.substr(1));
-    vector<string> myans;
-    for(string s :smallans)
-  
-    {
-        myans.push_back(s);
-        myans.push_back(s+ch);
-    }
-    return myans;
+     
+     count+=substring(input.substr(1),ans);
+     count+=substring(input.substr(1),ans+ch);
+     
+    return count;
 }
 
 int main()
 {
 
    
-   substring("abc","");
-
+   cout<<substring("abc","");
+   cout<<endl<<endl<<"HRM Assignment:"<<endl<<endl;
+   for (int i = 0; i < 250; i++)
+   {cout<<"yes ";
+       /* code */
+   }
+   
     return 0;
 }
