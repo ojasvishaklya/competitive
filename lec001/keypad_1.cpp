@@ -3,17 +3,17 @@
 using namespace std;
 
 vector<string> words = {
-    ":;/",//0
-    "abc",//1
-    "def",//2
-    "ghi",//3
-    "jkl",//4
-    "mno",//5
-    "pqrs",//6
-    "tuv",//7
-    "wxyz",//8
-    "&*%",//9
-    "#@$",//10
+    ":;/",   //0
+    "abc",   //1
+    "def",   //2
+    "ghi",   //3
+    "jkl",   //4
+    "mno",   //5
+    "pqrs",  //6
+    "tuv",   //7
+    "wxyz",  //8
+    "&*%",   //9
+    "#@$",   //10
 };
 
 vector<string> keypad(string input)
@@ -38,7 +38,7 @@ vector<string> keypad(string input)
 
 int main()
 {int i=0;
-    vector<string> ans = keypad("598");
+    vector<string> ans = keypad("102");
     for (string s : ans)
         cout << s <<" : "<<++i<< endl;
     return 0;
