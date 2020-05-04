@@ -51,6 +51,16 @@ void removeEdge(vector<vector<Edge>> &gp, int r, int c)
         }
         i++;
     }
+
+         i = 0;
+    for (Edge e : graph[c])
+    {
+        if (e.v == r)
+        {
+            graph[c].erase(graph[c].begin() + i);
+        }
+        i++;
+    }
 }
 
 void removeVertex(vector<vector<Edge>> &gp, int r)

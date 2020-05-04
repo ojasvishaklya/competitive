@@ -24,7 +24,7 @@ int floodFill(int sr, int sc, int er, int ec, vector<vector<int>> &board, int ra
         {
             int r = sr + mag * dir[d][0];
             int c = sc + mag * dir[d][1];
-            if (r>=0 && c>=0 && r<board.size() && c<board[0].size() && board[r][c]!=0)
+            if ((r<0 || c<0 || r>=board.size() || c>=board[0].size() || board[r][c]==0))
             {
                 count += floodFill(r, c, er, ec, board, rad, ans + dir[d] + to_string(mag));
             }
