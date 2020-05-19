@@ -123,36 +123,4 @@ int main()
     cout << "GRAPH AFTER DIJKSTRA";
 
     display(dgraph);
-    src = 0;
-    priority_queue<dpair, vector<dpair>, comp2> q2;
-    vector<bool> vis2(N, false);
-    vector<vector<edge>> pgraph(N, vector<edge>());
-
-    q2.push(dpair(src, -1, 0, 0));
-
-    while (q2.size())
-    {
-        int size = q2.size();
-        while (size-- > 0)
-        {
-            dpair vtx = q2.top();
-            q2.pop();
-
-            if (vis2[vtx.src] == true)
-                continue;
-            vis2[vtx.src] = true;
-            if (vtx.par != -1)
-                addEdge(pgraph, vtx.src, vtx.par, vtx.w);
-
-            for (edge e : graph[vtx.src])
-            {
-                if (!vis2[e.v])
-                    q2.push(dpair(e.v, vtx.src, e.w, vtx.wsf + e.w));
-            }
-        }
-    }
-    cout << "GRAPH AFTER PRIMS";
-
-    display(pgraph);
-    return 0;
 }

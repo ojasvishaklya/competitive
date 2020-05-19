@@ -34,7 +34,7 @@ int queen(vector<vector<bool>> arr, int idx, int qpsf, int tnq, string ans)
         col ^= (1 << x);
         diag ^= (1 << x - y + arr.size() - 1);
         anti_diag ^= (1 << x + y);
-        arr[x][y]=1;
+        arr[x][y] = 1;
 
         count += queen(arr, idx + 1, qpsf + 1, tnq, ans + "(" + to_string(x) + "," + to_string(y) + ") ");
 
@@ -42,8 +42,7 @@ int queen(vector<vector<bool>> arr, int idx, int qpsf, int tnq, string ans)
         col ^= (1 << x);
         diag ^= (1 << x - y + arr.size() - 1);
         anti_diag ^= (1 << x + y);
-        arr[x][y]=0;
-
+        arr[x][y] = 0;
     }
     count += queen(arr, idx + 1, qpsf, tnq, ans);
 
@@ -58,4 +57,27 @@ int main()
     cout << queen(arr, 0, 0, tq, "");
 
     return 0;
+}
+
+void Test(int N, int k)
+{
+    if (k > N)
+    {
+        return;
+    }
+
+    for (int i = 0; i < 10; i++)
+    {
+        if (k <= N)
+        {
+            cout << k << endl;
+
+            k *= 10;
+            Test(N, k);
+            k /= 10;
+            k++;
+            if (k % 10 == 0)
+                return;
+        }
+    }
 }

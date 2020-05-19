@@ -81,6 +81,29 @@ int DFS(int s, int d, string ans, int w, int t,answer &pair)
 
     return count;
 }
+bool dfs(vector<vector<Edge>> &graph, int king, int src, int dest)
+{
+    if (src == king)
+    {
+        return false;
+    }
+    if (src == dest)
+    {
+        return true;
+    }
+
+    bool res = false;
+    vis[src] = true;
+    cout << src << " ";
+    for (Edge e : graph[src])
+    {
+        if (!vis[e.v])
+            res = res || dfs(graph, king, e.v, dest);
+    }
+    vis[src] = false;
+
+    return res;
+}
 
 int main()
 {
@@ -92,13 +115,13 @@ int main()
     addEdge(graph, 4, 5, 10);
     addEdge(graph, 4, 6, 10);
     addEdge(graph, 5, 6, 10);
-    display(graph);
     int source = 0;
     int destination = 6;
     int target =35;
     answer pair;
 
-    cout << DFS(source, destination, "", 0,target,pair)<<endl;
-    cout<<"pair.low : "<<pair.low<<endl<<"pair.high : "<<pair.high<<endl<<"pair.floor : "<<pair.floor<<endl<<"pair.ciel : "<<pair.ciel<<endl;
+    //cout << DFS(source, destination, "", 0,target,pair)<<endl;
+    //cout<<"pair.low : "<<pair.low<<endl<<"pair.high : "<<pair.high<<endl<<"pair.floor : "<<pair.floor<<endl<<"pair.ciel : "<<pair.ciel<<endl;
+    cout<<dfs(graph, 3, 1, 4);
     return 0;
 }

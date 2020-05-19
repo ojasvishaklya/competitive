@@ -71,3 +71,44 @@ int main()
          << keypad("1510", "");
     return 0;
 }
+
+class Solution
+{
+public:
+    string frequencySort(string s)
+    {
+        vector<pair<int, char>> freq(69, {0, 0});
+        for (char c : s)
+        {
+            if (c == " ")
+            {
+                freq[68].first++;
+                freq[68].second = (char)c;
+            }
+            else if (c - '0' >= 0 && c - '0' <= 9)
+            {
+
+                freq[c - '0' + 58].first++;
+                freq[c - '0' + 58].second = (char)c;
+            }
+            else
+            {
+                freq[c - 'A'].first++;
+                freq[c - 'A'].second = (char)c;
+            }
+        }
+
+        sort(freq.begin(), freq.end());
+        reverse(freq.begin(), freq.end());
+        s = "";
+        for (int i = 0; i < 68; i++)
+            for (int j = 0; j < freq[i].first; j++)
+            {
+                if (i == 68)
+                    s += " ";
+                else
+                    s += freq[i].second;
+            }
+        return s;
+    }
+};
