@@ -30,7 +30,7 @@ public:
             return -1;
         if (root->val == data)
         {
-            cout << " (" << root->val << ") from path ";
+            cout << " ( " << root->val << " from path ) ";
             ans.push_back(root->val);
             return 1;
         }
@@ -63,10 +63,10 @@ public:
     {
         if (!root || root == block)
             return;
-        //cout<<root->val<<"at"<<level<<" ";
+
         if (level == 0)
         {
-            cout << " (" << root->val << ") from path ";
+            cout << " ( " << root->val << " from path ) ";
             ans.push_back(root->val);
             return;
         }
