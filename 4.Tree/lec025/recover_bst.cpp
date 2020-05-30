@@ -20,7 +20,12 @@ public:
     {
 
         inorder(root);
-
+        if (a != nullptr)
+        {
+            int temp = a->val;
+            a->val = b->val;
+            b->val = temp;
+        }
         return;
     }
 
@@ -29,7 +34,20 @@ public:
         if (!root)
             return;
         inorder(root->left);
-        in.push_back(root->val);
+
+        if(prev && prev->val > root->val)
+        {
+            if(a==nullptr)
+            {
+                a=prev;
+                b=root;
+            }
+            else
+            {
+                b=root;
+            }
+        }
+        prev=root;
         inorder(root->right);
         return;
     }
