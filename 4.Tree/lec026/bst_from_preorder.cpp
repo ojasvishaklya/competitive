@@ -56,55 +56,18 @@ void display(Node *node)
     return;
 }
 
-Node *addData(Node *root, int data)
+int idx = 0;
+
+Node *construct_from_pre(vector<int> &preorder, int lb, int rb)
 {
-    if (!root)
-        return new Node(data);
-
-    if (data < root->val)
-        root->left = addData(root->left, data);
-
-    if (data > root->val)
-        root->right = addData(root->right, data);
-
-    return root;
-}
-
-Node *remove(Node *root, int data)
-{
-    if (!root)
+    if (idx == preorder.size() || preorder[idx] < lb || preorder[idx] > rb)
         return nullptr;
 
-    if (data < root->val)
-        root->left = remove(root->left, data);
+    Node *root = new Node(preorder[idx]);
+    idx++;
+    root->left = construct_from_pre(preorder, lb, preorder[idx]);
+    root->right = construct_from_pre(preorder, preorder[idx], rb);
 
-    if (data > root->val)
-        root->right = remove(root->right, data);
-
-    if (data == root->val)
-    {
-        if (root->left == nullptr || root->right == nullptr)
-        {
-            if (root->left == nullptr)
-                return root->right;
-
-            if (root->right == nullptr)
-                return root->left;
-        }
-
-        else
-        {
-            Node *curr = root->left;
-
-            while (curr->right!=nullptr)
-            {
-                curr = curr->right;
-            }
-            root->val = curr->val;
-
-            root->left = remove(root->left, curr->val);
-        }
-    }
     return root;
 }
 
@@ -115,11 +78,8 @@ int main()
     Node *root = create(arr, 0, arr.size() - 1);
     display(root);
 
-    cout << "after adding 65" << endl;
-    addData(root, 65);
-    display(root);
-    cout << "after removing 100" << endl;
-    remove(root, 100);
+    vector<int> preorder = {70, 30, 10, 20, 50, 40, 60, 100, 80, 90, 120, 110, 130};
+    Node *root2 = construct_from_pre(preorder, INT_MIN, INT_MAX);
     display(root);
 
     return 0;

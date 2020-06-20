@@ -1,0 +1,14 @@
+Stack Implementation :
+
+(1) Using array:
+    Take an array and maintain a pointer
+
+(2) Using vector:
+    push=>push_back()
+    pop=>pop_back()
+    top=>arr[arr.size()-1]
+
+(3) Using linked list:
+    push=>add at tail
+    pop=>remove from tail
+    top=>tail->val
