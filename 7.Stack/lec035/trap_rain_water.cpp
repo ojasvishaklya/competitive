@@ -36,3 +36,42 @@ public:
         return totalWater;
     }
 };
+
+// =================================================================================================================
+
+
+class Solution
+{
+public:
+    int trap(vector<int> &height)
+    {
+        int n = height.size();
+        if (!n)
+            return 0;
+        int totalWater=0;
+        
+        int leftMax=0;
+        int rightMax=0;
+        int left=0;
+        int right=n-1;
+        
+        while(left<right)
+        {
+            leftMax=max(leftMax,height[left]);    
+            rightMax=max(rightMax,height[right]);
+            
+            if(leftMax <= rightMax)
+            {
+                totalWater+=leftMax-height[left];
+                left++;
+            }
+            else{
+                totalWater+=rightMax-height[right];
+                right--;
+            }
+
+        }
+        
+        return totalWater;
+    }
+};
