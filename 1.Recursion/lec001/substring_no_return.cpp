@@ -23,11 +23,6 @@ int main()
 
    
    cout<<substring("abc","");
-   cout<<endl<<endl<<"HRM Assignment:"<<endl<<endl;
-   for (int i = 0; i < 250; i++)
-   {cout<<"yes ";
-       /* code */
-   }
-   
+     
     return 0;
 }
